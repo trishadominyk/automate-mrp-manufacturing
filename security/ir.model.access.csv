@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_automate_mrp_manufacturing_automate_mrp_manufacturing,automate_mrp_manufacturing.automate_mrp_manufacturing,model_automate_mrp_manufacturing_automate_mrp_manufacturing,,1,0,0,0
