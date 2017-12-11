@@ -6,6 +6,11 @@ from odoo import models, fields, api
 from odoo.addons import decimal_precision as dp
 from odoo.tools import float_compare, float_round
 
+class mrp_production_inherit(models.Model):
+	_inherit = 'mrp.production'
+
+	method = fields.Selection([('0', 'Automatic'), ('1', 'Manual')], default='0', help="Determinant whether method of production is manual or automatic")
+
 class mrp_manufacturing_qty(models.TransientModel):
 	_inherit = 'change.production.qty'
 	

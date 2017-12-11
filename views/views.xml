@@ -1,59 +1,14 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="automate_mrp_manufacturing.list">
-      <field name="name">automate_mrp_manufacturing list</field>
-      <field name="model">automate_mrp_manufacturing.automate_mrp_manufacturing</field>
+    <record id="mrp_production_form_view_inherit" model="ir.ui.view">
+      <field name="name">mrp.production.form.inherit</field>
+      <field name="model">mrp.production</field>
+      <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <xpath expr="//sheet//group//group[1]" position="inside">
+          <field name="method"/>
+        </xpath>
       </field>
-    </record>
-    -->
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="automate_mrp_manufacturing.action_window">
-      <field name="name">automate_mrp_manufacturing window</field>
-      <field name="res_model">automate_mrp_manufacturing.automate_mrp_manufacturing</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="automate_mrp_manufacturing.action_server">
-      <field name="name">automate_mrp_manufacturing server</field>
-      <field name="model_id" ref="model_automate_mrp_manufacturing_automate_mrp_manufacturing"/>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="automate_mrp_manufacturing" id="automate_mrp_manufacturing.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="automate_mrp_manufacturing.menu_1" parent="automate_mrp_manufacturing.menu_root"/>
-    <menuitem name="Menu 2" id="automate_mrp_manufacturing.menu_2" parent="automate_mrp_manufacturing.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="automate_mrp_manufacturing.menu_1_list" parent="automate_mrp_manufacturing.menu_1"
-              action="automate_mrp_manufacturing.action_window"/>
-    <menuitem name="Server to list" id="automate_mrp_manufacturing" parent="automate_mrp_manufacturing.menu_2"
-              action="automate_mrp_manufacturing.action_server"/>
-    -->
+    </record>    
   </data>
 </odoo>
