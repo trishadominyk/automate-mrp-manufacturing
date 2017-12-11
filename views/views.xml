@@ -1,5 +1,6 @@
 <odoo>
 	<data>
+		<!-- formview inherit -->
 		<record id="mrp_production_form_view_inherit" model="ir.ui.view">
 			<field name="name">mrp.production.form.inherit</field>
 			<field name="model">mrp.production</field>
@@ -11,6 +12,7 @@
 			</field>
 		</record>
 
+		<!-- treeview inherit -->
 		<record id="mrp_production_tree_view_inherit" model="ir.ui.view">
 			<field name="name">mrp.production.tree.inherit</field>
             <field name="model">mrp.production</field>
@@ -22,4 +24,4 @@
 			</field>
 		</record>
 	</data>
-</odoo>
+</odoo> 
