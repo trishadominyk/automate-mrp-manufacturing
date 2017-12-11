@@ -16,7 +16,7 @@ class mrp_manufacturing_qty(models.TransientModel):
 	
 	@api.multi
 	def auto_change_qty(self):
-		for product in self.env['mrp.production'].search([('state','=','confirmed')]):
+		for product in self.env['mrp.production'].search([('state','=','confirmed'),('method','=','0')]):
 			quantity = self.env['mrp.bom'].browse(product.bom_id).id.product_qty
 			
 			# check stock if needed restock
@@ -48,14 +48,14 @@ class automate_mrp_manufacturing(models.TransientModel):
 	@api.multi
 	def auto_produce_product(self):
 		self.confirmed_to_progress()
-		for product in self.env['mrp.production'].search([('state','=','progress')]):
+		for product in self.env['mrp.production'].search([('state','=','progress'),('method','=','0')]):
 			product.button_mark_done()
 
 
 	@api.multi
 	def confirmed_to_progress(self):
 		# confirmed to progress
-		for product in self.env['mrp.production'].search([('state','=','confirmed')]):
+		for product in self.env['mrp.production'].search([('state','=','confirmed'),('method','=','0')]):
 			# insert into product.produce
 			vals = {
 				'product_id':product.product_id.id,
