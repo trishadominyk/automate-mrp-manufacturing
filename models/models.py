@@ -21,12 +21,12 @@ class mrp_manufacturing_qty(models.TransientModel):
 			
 			# check stock if needed restock
 			if product.product_qty > self.env['product.product'].browse(product.product_id).id.qty_available:
-				# check qty in bill of material
-				if product.product_qty > quantity:
-					# if not enough for given slices must double manufacture quantity
-					while product.product_qty > quantity:
-						quantity = quantity + self.env['mrp.bom'].browse(product.bom_id).id.product_qty
-				# change manufacturing qty
+				# # check qty in bill of material
+				# if product.product_qty > quantity:
+				# 	# if not enough for given slices must double manufacture quantity
+				# 	while product.product_qty > quantity:
+				# 		quantity = quantity + self.env['mrp.bom'].browse(product.bom_id).id.product_qty
+				# # change manufacturing qty
 				vals = {
 					'mo_id':product.id,
 					'product_qty': quantity,
@@ -47,10 +47,11 @@ class automate_mrp_manufacturing(models.TransientModel):
 
 	@api.multi
 	def auto_produce_product(self):
-		self.confirmed_to_progress()
-		for product in self.env['mrp.production'].search([('state','=','progress'),('method','=','0')]):
-			product.button_mark_done()
-
+		for product in self.env['mrp.production'].search([('state','=','confirmed'),('method','=','0')]): 
+			if product.product_qty == self.env['mrp.bom'].browse(product.bom_id).id.product_qty
+				self.confirmed_to_progress()
+				for product in self.env['mrp.production'].search([('state','=','progress'),('method','=','0')]):
+					product.button_mark_done()
 
 	@api.multi
 	def confirmed_to_progress(self):
