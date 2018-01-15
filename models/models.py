@@ -48,7 +48,7 @@ class automate_mrp_manufacturing(models.TransientModel):
 	@api.multi
 	def auto_produce_product(self):
 		for product in self.env['mrp.production'].search([('state','=','confirmed'),('method','=','0')]): 
-			if product.product_qty == self.env['mrp.bom'].browse(product.bom_id).id.product_qty
+			if product.product_qty == self.env['mrp.bom'].browse(product.bom_id).id.product_qty:
 				self.confirmed_to_progress()
 				for product in self.env['mrp.production'].search([('state','=','progress'),('method','=','0')]):
 					product.button_mark_done()
