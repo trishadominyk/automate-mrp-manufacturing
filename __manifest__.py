@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['point_of_sale','mrp'],
+    'depends': ['pos_mrp_order','point_of_sale','mrp'],
 
     # 'js': [
     #     'static/js/pos.js',
