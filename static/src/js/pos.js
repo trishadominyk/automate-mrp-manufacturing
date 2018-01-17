@@ -47,4 +47,11 @@ odoo.define('automate_mrp_manufacturing.models_pos_order', function (require){
 			}
 		},
 	});
+
+	pos_screens.ReceiptScreenWidget.include({
+		click_next: function(){
+			this.pos.get_order().finalize();
+			location.reload();
+		},
+	});
 });
